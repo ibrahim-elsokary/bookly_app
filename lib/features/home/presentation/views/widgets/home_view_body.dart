@@ -40,16 +40,7 @@ class HomeScreenBody extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SliverFillRemaining(
-                  hasScrollBody: false,
-                  child: SizedBox(
-                    height: double.maxFinite,
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 50),
-                      child: BestSellerListView(),
-                    ),
-                  ),
-                ),
+                const BestSellerListView(),
               ],
             ),
           ),
