@@ -12,33 +12,49 @@ class HomeScreenBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: const [
-          SizedBox(
+        children: [
+          const SizedBox(
             height: 45,
           ),
-          CustomAppBar(),
-          SizedBox(
+          const CustomAppBar(),
+          const SizedBox(
             height: 40,
           ),
-          FeaturedListView(),
-          SizedBox(
-            height: 50,
+          Expanded(
+            child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: const [
+                      FeaturedListView(),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Text(
+                        "Best Seller",
+                        style: Styles.titleMedium,
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+                const SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: SizedBox(
+                    height: double.maxFinite,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 50),
+                      child: BestSellerListView(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-          Text(
-            "Best Seller",
-            style: Styles.titleMedium,
-          ),
-          SizedBox(height: 20),
-          Expanded(child: Padding(
-            padding: EdgeInsets.only(right: 50),
-            child: BestSellerListView(),
-          )),
         ],
       ),
     );
   }
 }
-
-
-

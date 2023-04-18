@@ -10,6 +10,7 @@ class FeaturedListView extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height/3.6,
       child: ListView.builder(
+        
         physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.zero,
         scrollDirection: Axis.horizontal,
