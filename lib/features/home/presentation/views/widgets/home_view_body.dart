@@ -1,6 +1,6 @@
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
-import 'best_seller_list_item.dart';
+import 'best_seller_list_view.dart';
 import 'custom_app_bar.dart';
 import 'featured_list_view.dart';
 
@@ -30,11 +30,15 @@ class HomeScreenBody extends StatelessWidget {
             style: Styles.titleMedium,
           ),
           SizedBox(height: 20),
-          BestSellerListItem(),
+          Expanded(child: Padding(
+            padding: EdgeInsets.only(right: 50),
+            child: BestSellerListView(),
+          )),
         ],
       ),
     );
   }
 }
+
 
 
