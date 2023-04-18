@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'custom_app_bar.dart';
@@ -8,17 +9,20 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const[
-        SizedBox(height: 45,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
-          child: CustomAppBar(),
-        ),
-        SizedBox(height: 40,),
-        FeaturedListView(),
-        
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: const[
+          SizedBox(height: 45,),
+          CustomAppBar(),
+          SizedBox(height: 40,),
+          FeaturedListView(),
+          SizedBox(height: 50,),
+          Text("Best Seller" , style: Styles.titleMedium,),
+          
+        ],
+      ),
     );
   }
 }
