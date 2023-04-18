@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'custom_app_bar.dart';
-import 'custom_list_item.dart';
+import 'featured_list_view.dart';
 
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({Key? key}) : super(key: key);
@@ -15,7 +15,9 @@ class HomeScreenBody extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 30),
           child: CustomAppBar(),
         ),
-        CustomListItem(),
+        SizedBox(height: 40,),
+        FeaturedListView(),
+        
       ],
     );
   }
