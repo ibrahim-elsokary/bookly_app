@@ -54,32 +54,15 @@ class BestSellerListItem extends StatelessWidget {
 
   Row ratingAndPrice() {
     return Row(
-              children: const [
-                Text(
+              children:  const [
+                 Text(
                   "19.99 €",
                   style: Styles.textStyle20Regualr,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Spacer(),  
-                Icon(Icons.star_rounded , color: Colors.yellow,),
-                  
-                SizedBox(width: 6.3),
-                  
-                 Text(
-                  "4.8",
-                  style: Styles.textStyle16Medium,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                  
-                SizedBox(width:9),
-                 Text(
-                  "(2390)",
-                  style: Styles.textStyle14Regualr,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                BookRating(),
                 
               ],
             );
@@ -99,6 +82,42 @@ class BestSellerListItem extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class BookRating extends StatelessWidget {
+  final MainAxisAlignment mainAxisAlignment;
+  const BookRating({
+    super.key,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: mainAxisAlignment ,
+      children: const [
+         Icon(Icons.star_rounded , color: Colors.yellow,),
+          
+         SizedBox(width: 6.3),
+          
+          Text(
+          "4.8",
+          style: Styles.textStyle16Medium,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+          
+         SizedBox(width:9),
+          Text(
+          "(2390)",
+          style: Styles.textStyle14Regualr,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
     );
   }
 }
