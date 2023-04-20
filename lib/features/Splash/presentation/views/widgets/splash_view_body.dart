@@ -7,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({Key? key}) : super(key: key);
 
@@ -28,9 +27,12 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void goToHomeScreen() {
-    Future.delayed(Duration(seconds: 2),() {
-      GoRouter.of(context).push(AppRouter.homeView);
-    },);
+    Future.delayed(
+      Duration(seconds: 2),
+      () {
+        GoRouter.of(context).push(AppRouter.homeView);
+      },
+    );
   }
 
   @override

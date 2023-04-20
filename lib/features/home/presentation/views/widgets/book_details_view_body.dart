@@ -17,7 +17,9 @@ class BookDetailsViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         children: [
-          const SizedBox(height: 30,),
+          const SizedBox(
+            height: 30,
+          ),
           const CustomBookDetailsAppBar(),
           Expanded(
             child: CustomScrollView(
@@ -46,8 +48,6 @@ class BookDetailsViewBody extends StatelessWidget {
     );
   }
 }
-
-
 
 class BookDetailsSection extends StatelessWidget {
   const BookDetailsSection({Key? key}) : super(key: key);

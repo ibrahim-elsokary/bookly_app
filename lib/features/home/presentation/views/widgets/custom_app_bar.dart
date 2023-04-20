@@ -9,12 +9,16 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      SvgPicture.asset(AssetsData.logo ),
-      const Spacer(),
-      IconButton(onPressed: () {
-        GoRouter.of(context).push(AppRouter.search);
-      }, icon:SvgPicture.asset(AssetsData.searchIcon) )
-    ],);
+    return Row(
+      children: [
+        SvgPicture.asset(AssetsData.logo),
+        const Spacer(),
+        IconButton(
+            onPressed: () {
+              GoRouter.of(context).push(AppRouter.search);
+            },
+            icon: SvgPicture.asset(AssetsData.searchIcon))
+      ],
+    );
   }
 }

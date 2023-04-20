@@ -7,7 +7,7 @@ class SearchListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      physics: const  BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       itemCount: 30,
       itemBuilder: (context, index) {
         return const Padding(

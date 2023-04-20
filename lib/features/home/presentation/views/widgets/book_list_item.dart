@@ -10,7 +10,6 @@ class BookListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return GestureDetector(
       onTap: () => GoRouter.of(context).push(AppRouter.bookDetails),
       child: Row(
@@ -54,18 +53,17 @@ class BookListItem extends StatelessWidget {
 
   Row ratingAndPrice() {
     return Row(
-              children:  const [
-                 Text(
-                  "19.99 €",
-                  style: Styles.textStyle20Regualr,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Spacer(),  
-                BookRating(),
-                
-              ],
-            );
+      children: const [
+        Text(
+          "19.99 €",
+          style: Styles.textStyle20Regualr,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        Spacer(),
+        BookRating(),
+      ],
+    );
   }
 
   SizedBox bookItem() {
@@ -91,27 +89,26 @@ class BookRating extends StatelessWidget {
   const BookRating({
     super.key,
     this.mainAxisAlignment = MainAxisAlignment.start,
-    
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: mainAxisAlignment ,
+      mainAxisAlignment: mainAxisAlignment,
       children: const [
-         Icon(Icons.star_rounded , color: Colors.yellow,),
-          
-         SizedBox(width: 6.3),
-          
-          Text(
+        Icon(
+          Icons.star_rounded,
+          color: Colors.yellow,
+        ),
+        SizedBox(width: 6.3),
+        Text(
           "4.8",
           style: Styles.textStyle16Medium,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-          
-         SizedBox(width:9),
-          Text(
+        SizedBox(width: 9),
+        Text(
           "(2390)",
           style: Styles.textStyle14Regualr,
           maxLines: 1,

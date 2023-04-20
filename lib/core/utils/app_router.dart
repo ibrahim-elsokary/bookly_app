@@ -17,21 +17,18 @@ abstract class AppRouter {
           return const SplashView();
         },
       ),
-
       GoRoute(
         path: search,
         builder: (BuildContext context, GoRouterState state) {
           return const SearchView();
         },
       ),
-
-       GoRoute(
+      GoRoute(
         path: homeView,
         builder: (BuildContext context, GoRouterState state) {
           return const HomeScreen();
         },
       ),
-
       GoRoute(
         path: bookDetails,
         builder: (BuildContext context, GoRouterState state) {
