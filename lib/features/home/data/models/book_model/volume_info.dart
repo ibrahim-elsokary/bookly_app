@@ -16,7 +16,8 @@ class VolumeInfo extends Equatable {
   final int? pageCount;
   final String? printType;
   final List<String>? categories;
-  final String? maturityRating;
+  final double? averageRating;
+    final String? maturityRating;
   final bool? allowAnonLogging;
   final String? contentVersion;
   final PanelizationSummary? panelizationSummary;
@@ -26,7 +27,7 @@ class VolumeInfo extends Equatable {
   final String? infoLink;
   final String? canonicalVolumeLink;
 
-  const VolumeInfo({
+  const VolumeInfo( {
     this.title,
     this.authors,
     this.publisher,
@@ -37,6 +38,7 @@ class VolumeInfo extends Equatable {
     this.pageCount,
     this.printType,
     this.categories,
+    this.averageRating,
     this.maturityRating,
     this.allowAnonLogging,
     this.contentVersion,
@@ -49,6 +51,7 @@ class VolumeInfo extends Equatable {
   });
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
+      
         title: json['title'] as String?,
         authors: (json['authors'] as List<dynamic>?)?.cast<String>(),
         publisher: json['publisher'] as String?,
@@ -65,6 +68,7 @@ class VolumeInfo extends Equatable {
         printType: json['printType'] as String?,
         categories: (json['categories'] as List<dynamic>?)?.cast<String>(),
         maturityRating: json['maturityRating'] as String?,
+        averageRating : (json['averageRating']?.toDouble()),
         allowAnonLogging: json['allowAnonLogging'] as bool?,
         contentVersion: json['contentVersion'] as String?,
         panelizationSummary: json['panelizationSummary'] == null

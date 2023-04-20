@@ -1,13 +1,17 @@
+import 'dart:math';
+
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListItem extends StatelessWidget {
-  const BookListItem({Key? key}) : super(key: key);
-
+  const BookListItem({Key? key, required this.book}) : super(key: key);
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -15,7 +19,7 @@ class BookListItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          bookItem(),
+          bookItem(imageUrl: book.volumeInfo!.imageLinks!.thumbnail!),
           const SizedBox(
             width: 30,
           ),
@@ -26,8 +30,8 @@ class BookListItem extends StatelessWidget {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.6,
-                  child: const Text(
-                    "Harry Potter\nand the Goblet of Fire",
+                  child: Text(
+                    book.volumeInfo!.title!,
                     style: Styles.textStyle20Regualr,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -35,7 +39,7 @@ class BookListItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  "J.K. Rowling",
+                  book.volumeInfo!.authors.toString(),
                   style: Styles.textStyle14Medium
                       .copyWith(color: kSecondryFontColorDark),
                   maxLines: 1,
@@ -53,30 +57,38 @@ class BookListItem extends StatelessWidget {
 
   Row ratingAndPrice() {
     return Row(
-      children: const [
-        Text(
-          "19.99 €",
+      children: [
+        const Text(
+          'Free',
           style: Styles.textStyle20Regualr,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        Spacer(),
-        BookRating(),
+        const Spacer(),
+        BookRating(
+          book: book,
+        ),
       ],
     );
   }
 
-  SizedBox bookItem() {
+  SizedBox bookItem({required String imageUrl}) {
     return SizedBox(
       height: 105,
       child: AspectRatio(
         aspectRatio: 2 / 3,
         child: Container(
+          clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             color: Colors.blue,
-            image: const DecorationImage(
-                image: AssetImage(AssetsData.testImage), fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(7),
+          ),
+          child: CachedNetworkImage(
+            imageUrl: imageUrl,
+            errorWidget: (context, url, error) => const Center(
+              child: Icon(Icons.error_outline),
+            ),
+            fit: BoxFit.cover,
           ),
         ),
       ),
@@ -89,27 +101,31 @@ class BookRating extends StatelessWidget {
   const BookRating({
     super.key,
     this.mainAxisAlignment = MainAxisAlignment.start,
+    required this.book,
   });
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: mainAxisAlignment,
-      children: const [
-        Icon(
+      children: [
+        const Icon(
           Icons.star_rounded,
           color: Colors.yellow,
         ),
-        SizedBox(width: 6.3),
+        const SizedBox(width: 6.3),
         Text(
-          "4.8",
+          book.volumeInfo?.averageRating != null
+              ? book.volumeInfo!.averageRating.toString()
+              : '---',
           style: Styles.textStyle16Medium,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        SizedBox(width: 9),
-        Text(
-          "(2390)",
+        const SizedBox(width: 9),
+         Text(
+          Random().nextInt(10000).toString(),
           style: Styles.textStyle14Regualr,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
