@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:bookly_app/core/models/book_model/book_model.dart';
 import 'package:bookly_app/core/utils/error/failure.dart';
-import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+
 import 'package:bookly_app/features/home/data/repos/home_repo.dart';
 import 'package:equatable/equatable.dart';
 
@@ -16,7 +17,7 @@ class FeaturdBookCuibtCubit extends Cubit<FeaturdBookCuibtState> {
     result.fold((failure) {
       emit(FeaturdBookCuibtFailure(failure.errorMsg));
     }, (books) {
-      emit(FeaturdBookCuibtSuccess(books));
+      emit(FeaturdBookCuibtSuccess(books as List<BookModel>));
     });
   }
 }
