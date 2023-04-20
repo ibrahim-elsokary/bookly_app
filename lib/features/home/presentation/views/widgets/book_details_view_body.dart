@@ -38,7 +38,7 @@ class BookDetailsViewBody extends StatelessWidget {
                         height: 49,
                       ),
                     ),
-                    const SimilarBooksSection(),
+                     SimilarBooksSection(book: book,),
                   ],
                 ))
               ],
@@ -89,18 +89,18 @@ class BookDetailsSection extends StatelessWidget {
 }
 
 class SimilarBooksSection extends StatelessWidget {
-  const SimilarBooksSection({Key? key}) : super(key: key);
-
+  const SimilarBooksSection({Key? key, required this.book}) : super(key: key);
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text("You can also like", style: Styles.textStyle16Bold),
-        SizedBox(
+      children:  [
+        const Text("You can also like", style: Styles.textStyle16Bold),
+        const SizedBox(
           height: 15,
         ),
-        SimilarListView(),
+        SimilarListView(book: book,),
       ],
     );
   }
