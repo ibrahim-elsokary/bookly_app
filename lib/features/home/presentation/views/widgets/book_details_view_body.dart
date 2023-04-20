@@ -1,6 +1,6 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_item.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_list_item.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_list_item.dart';
 import 'package:flutter/material.dart';
 
