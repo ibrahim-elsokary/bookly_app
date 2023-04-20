@@ -24,7 +24,7 @@ class CustomBookDetailsButton extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  '19.99 €',
+                  'Free',
                   style: Styles.textStyle18Bold,
                 )),
           ),

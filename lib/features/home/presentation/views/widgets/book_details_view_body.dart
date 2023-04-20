@@ -1,5 +1,6 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_list_item.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_list_item.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +10,8 @@ import 'custom_book_details_button.dart';
 import 'similar_list_view.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({Key? key}) : super(key: key);
-
+  const BookDetailsViewBody({Key? key, required this.book}) : super(key: key);
+  final BookModel book ;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,17 +28,17 @@ class BookDetailsViewBody extends StatelessWidget {
               slivers: [
                 SliverList(
                     delegate: SliverChildListDelegate(
-                  const [
-                    SizedBox(
+                   [
+                    const SizedBox(
                       height: 36,
                     ),
-                    BookDetailsSection(),
-                    Expanded(
-                      child: SizedBox(
+                    BookDetailsSection(book:book),
+                    const Expanded(
+                      child:  SizedBox(
                         height: 49,
                       ),
                     ),
-                    SimilarBooksSection(),
+                    const SimilarBooksSection(),
                   ],
                 ))
               ],
@@ -50,34 +51,34 @@ class BookDetailsViewBody extends StatelessWidget {
 }
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({Key? key}) : super(key: key);
-
+  const BookDetailsSection({Key? key, required this.book}) : super(key: key);
+  final BookModel book ;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
             width: MediaQuery.of(context).size.height / 4.5,
-            child: const CustomListItem(imageUrl: 'http://books.google.com/books/content?id=RxHbPxbBM1AC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',)),
+            child:  CustomListItem(imageUrl: book.volumeInfo!.imageLinks!.thumbnail!,)),
         const SizedBox(
           height: 40,
         ),
-        const Text(
-          "The Jungle Book",
+         Text(
+           book.volumeInfo!.title!,
           style: Styles.textStyle30Regualr,
         ),
         const SizedBox(
           height: 4,
         ),
         Text(
-          "Rudyard Kipling",
+           book.volumeInfo!.authors![0],
           style:
               Styles.textStyle18Medium.copyWith(color: kSecondryFontColorDark),
         ),
         const SizedBox(
           height: 14,
         ),
-        //const BookRating(mainAxisAlignment: MainAxisAlignment.center),
+         BookRating(mainAxisAlignment: MainAxisAlignment.center ,book: book ),
         const SizedBox(
           height: 37,
         ),

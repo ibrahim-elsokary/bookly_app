@@ -5,7 +5,7 @@ import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,7 +15,9 @@ class BookListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => GoRouter.of(context).push(AppRouter.bookDetails),
+      onTap: () => GoRouter.of(context).push(AppRouter.bookDetails , extra: book),
+
+      
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,7 +41,7 @@ class BookListItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  book.volumeInfo!.authors.toString(),
+                  book.volumeInfo!.authors![0],
                   style: Styles.textStyle14Medium
                       .copyWith(color: kSecondryFontColorDark),
                   maxLines: 1,
@@ -76,22 +78,11 @@ class BookListItem extends StatelessWidget {
     return SizedBox(
       height: 105,
       child: AspectRatio(
-        aspectRatio: 2 / 3,
-        child: Container(
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.circular(7),
-          ),
-          child: CachedNetworkImage(
+          aspectRatio: 2 / 3,
+          child: CustomListItem(
             imageUrl: imageUrl,
-            errorWidget: (context, url, error) => const Center(
-              child: Icon(Icons.error_outline),
-            ),
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
+            borderRadius: 7,
+          )),
     );
   }
 }
@@ -124,8 +115,11 @@ class BookRating extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(width: 9),
-         Text(
-          Random().nextInt(10000).toString(),
+        Text(
+          book.volumeInfo?.averageRating != null
+              ?  Random().nextInt(10000).toString()
+              : '0',
+         
           style: Styles.textStyle14Regualr,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
