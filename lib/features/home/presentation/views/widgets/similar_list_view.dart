@@ -17,7 +17,7 @@ class SimilarListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
-            child: CustomListItem(borderRadius: 7),
+            child: CustomListItem(borderRadius: 7,imageUrl: 'http://books.google.com/books/content?id=RxHbPxbBM1AC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'),
           );
         },
       ),
