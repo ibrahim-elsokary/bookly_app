@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class CustomListItem extends StatelessWidget {
   final double borderRadius;
-  final String imageUrl;
+  final String ? imageUrl;
   const CustomListItem(
       {Key? key, this.borderRadius = 20, required this.imageUrl})
       : super(key: key);
@@ -20,7 +20,7 @@ class CustomListItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child:  CachedNetworkImage(
-          imageUrl: imageUrl,
+          imageUrl: imageUrl.toString(),
           errorWidget: (context, url, error) => const Center(
             child:  Icon(Icons.error_outline),
           ),

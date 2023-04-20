@@ -33,10 +33,8 @@ class BookDetailsViewBody extends StatelessWidget {
                       height: 36,
                     ),
                     BookDetailsSection(book:book),
-                    const Expanded(
-                      child:  SizedBox(
-                        height: 49,
-                      ),
+                    const SizedBox(
+                      height: 49,
                     ),
                      SimilarBooksSection(book: book,),
                   ],
@@ -59,7 +57,7 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         SizedBox(
             width: MediaQuery.of(context).size.height / 4.5,
-            child:  CustomListItem(imageUrl: book.volumeInfo!.imageLinks!.thumbnail!,)),
+            child:  CustomListItem(imageUrl: book.volumeInfo?.imageLinks?.thumbnail,)),
         const SizedBox(
           height: 40,
         ),
@@ -82,7 +80,7 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 37,
         ),
-        const CustomBookDetailsButton(),
+         CustomBookDetailsButton(book: book),
       ],
     );
   }

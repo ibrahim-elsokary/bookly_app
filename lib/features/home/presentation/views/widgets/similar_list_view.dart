@@ -36,8 +36,8 @@ class SimilarListView extends StatelessWidget {
                         .push(AppRouter.bookDetails, extra: state.books[index]),
                     child: CustomListItem(
                         borderRadius: 7,
-                        imageUrl: state
-                            .books[index].volumeInfo!.imageLinks!.thumbnail!),
+                        imageUrl: (state.books[index].volumeInfo?.imageLinks?.thumbnail)
+                        ),
                   ),
                 );
               },
