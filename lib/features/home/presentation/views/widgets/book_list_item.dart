@@ -21,7 +21,7 @@ class BookListItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          bookItem(imageUrl: book.volumeInfo!.imageLinks!.thumbnail!),
+          bookItem(imageUrl: book.volumeInfo?.imageLinks?.thumbnail),
           const SizedBox(
             width: 30,
           ),
@@ -33,7 +33,7 @@ class BookListItem extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.6,
                   child: Text(
-                    book.volumeInfo!.title!,
+                    book.volumeInfo?.title??"unknown",
                     style: Styles.textStyle20Regualr,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -41,7 +41,7 @@ class BookListItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  book.volumeInfo!.authors![0],
+                  book.volumeInfo?.authors?[0]??"unknown",
                   style: Styles.textStyle14Medium
                       .copyWith(color: kSecondryFontColorDark),
                   maxLines: 1,
@@ -74,7 +74,7 @@ class BookListItem extends StatelessWidget {
     );
   }
 
-  SizedBox bookItem({required String imageUrl}) {
+  SizedBox bookItem({required String? imageUrl}) {
     return SizedBox(
       height: 105,
       child: AspectRatio(
